@@ -1,0 +1,32 @@
+mylist = ['a','b','c']
+
+for i, item in enumerate(mylist):
+    print('%i: %s' % (i,item))
+from scipy import integrate
+def mysat(vin):
+    if vin > 255:
+        vout = 255
+    elif vin < -255:
+        vout = -255
+    else:
+        vout = vin
+    return vout
+def dxdt(x,t,kp,theta_d,use_sat=True):
+    theta = x[0]
+    theta_dot = x[1]
+    e = theta_d - theta
+    v = kp*e
+    if use_sat:
+        v = mysat(v)
+    out = [theta_dot, g*p*v-p*theta_dot]
+    return out
+
+
+x_mat1 = integrate.odeint(dxdt,[0,0],t,args=(5,1000,False))
+x_mat2 = integrate.odeint(dxdt,[0,0],t,args=(5,1000,True))
+plt.figure()
+plt.plot(t,x_mat1[:,0])
+plt.plot(t,x_mat2[:,0])
+plt.show()
+
+https://github.com/ryanGT/youtube_code_share/blob/master/P_control_with_saturation/P_control_with_saturation.ipynb

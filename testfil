@@ -1,0 +1,20 @@
+
+
+
+
+
+
+
+
+
+class System:
+
+  def __init__(sys, name, ss):
+    sys.name = name
+    sys.ss = ss
+
+    #sys.TransferFunction()
+
+  def changeName(self,newname):
+    sys.name = newname
+    print("Hello my name is " + sys.name)
