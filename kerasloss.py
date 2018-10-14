@@ -45,4 +45,14 @@ def test_loss():
 
 if __name__ == '__main__':
     test_loss()
-test_loss()
+#test_loss()
+
+
+
+
+##TEST
+ass= np.array([3,2],np.int32)
+fag = np.array([2,1],np.int32)
+input = np.array([ass,fag],np.int32)
+print(input)
+print(input.shape)
